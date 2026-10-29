@@ -1,0 +1,24 @@
+{
+  "name": "storylinkpro",
+  "owner": {
+    "name": "Storylink",
+    "url": "https://storylink.pro"
+  },
+  "metadata": {
+    "description": "Storylink skills for Claude Code: Instagram analytics for your stories, posts and reels."
+  },
+  "plugins": [
+    {
+      "name": "storylink",
+      "source": "./",
+      "description": "Write a report for each Storylink workspace, find the probable cause of a drop in views, and find what works in your best and worst content. Includes the Storylink MCP server.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Storylink",
+        "url": "https://storylink.pro"
+      },
+      "license": "MIT",
+      "category": "productivity"
+    }
+  ]
+}

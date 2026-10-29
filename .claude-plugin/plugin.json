@@ -1,0 +1,25 @@
+{
+  "name": "storylink",
+  "displayName": "Storylink — Instagram analytics skills",
+  "version": "1.0.0",
+  "description": "Skills for Storylink (Instagram scheduling and analytics): write a report for each workspace, find the probable cause of a drop in views, and find what works in your best and worst content. Includes the Storylink MCP server (Sign in with Storylink, read-only).",
+  "author": {
+    "name": "Storylink",
+    "url": "https://storylink.pro"
+  },
+  "homepage": "https://storylink.pro",
+  "repository": "https://github.com/storylinkpro/storylink-skills",
+  "documentationUrl": "https://github.com/storylinkpro/storylink-skills#readme",
+  "supportUrl": "https://github.com/storylinkpro/storylink-skills/issues",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://storylink.pro/en/legal/privacy",
+  "keywords": [
+    "instagram",
+    "analytics",
+    "stories",
+    "reels",
+    "social-media",
+    "mcp",
+    "storylink"
+  ]
+}

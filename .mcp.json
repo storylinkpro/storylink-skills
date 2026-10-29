@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "storylink": {
+      "type": "http",
+      "url": "https://storylink.pro/mcp"
+    }
+  }
+}
