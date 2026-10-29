@@ -27,12 +27,19 @@ If the tools are not available, tell the user to connect Storylink:
 
 1. Call `whoami`. Keep the plan and the default workspace.
 2. Call `list_workspaces`. Keep the `slug` and the `name` of each workspace that the report must include.
+   - If the workspaces have a `tools_answer_here` field, the connection uses a Business API key. The tools answer only for the workspace with `tools_answer_here: true`. Write the report for that workspace only, and say so in one line. Do not write a report for the other workspaces: their numbers are not available with this key.
 3. For each workspace:
    1. Call `get_summary` with `range` and `workspace: "<slug>"`.
    2. Call `top_content` with `range`, `workspace: "<slug>"`, `metric`, `order: "best"` and `limit: 3`.
    3. Call `top_content` with `range`, `workspace: "<slug>"`, `metric`, `order: "worst"` and `limit: 3`.
-4. If a tool does not accept the `workspace` argument, the connection uses a Business API key. A key answers for its own workspace only. Write the report for that workspace, and say so in one line.
+4. Check that `workspace.slug` in the `get_summary` answer is the slug that you asked for. If it is not, the connection uses a Business API key, and the tools answer for one workspace only. Stop. Write the report only for the workspace that `get_summary` names, and say so in one line. Never put the numbers of one workspace under the name of a different workspace.
 5. Write the report in the format below.
+
+### Cost and rate limits
+
+A report makes 2 + 3 × N tool calls for N workspaces (for example, 47 calls for 15 workspaces). All the MCP clients of one user share a limit of 60 requests per minute. For many workspaces, the report can go above the limit.
+
+If a tool answers with a rate-limit error (`429`, `rate_limited`), do not stop. Wait for the number of seconds that the error gives ("Retry after <n>s", or the `Retry-After` value). Then call the same tool again and continue with the next workspaces. Do not start the report again. Do not leave out a workspace because of a rate limit.
 
 ## Format
 
