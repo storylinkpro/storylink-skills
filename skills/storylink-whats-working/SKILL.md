@@ -21,7 +21,7 @@ claude.ai connectors cannot send an API key yet.
 
 ## Inputs
 
-- **Workspace**: the workspace that the user names. If the user names none, use the default workspace from `whoami`. An API key answers only for its own workspace, whatever `workspace` you pass. If `get_summary` or `top_content` names a different workspace, use that workspace and say so in one line.
+- **Workspace**: the workspace that the user names. If the user names none, use the default workspace from `whoami`. An API key answers only for its own workspace, whatever `workspace` you pass. If `top_content` names a different workspace, use that workspace and say so in one line.
 - **Range**: `30d` by default, or the window that the user gives. On the Free plan, the window is always this month so far.
 - **Metric**: `engagement` by default. Use `views` or `reach` if the user asks. Engagement is replies + shares for a story, likes + comments + saves for a post, and likes + comments + saves + shares for a reel.
 
