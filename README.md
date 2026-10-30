@@ -22,23 +22,24 @@ The [Storylink MCP server](https://github.com/storylinkpro/storylink-mcp) gives 
 
 ## Install in Claude Code
 
-1. In Claude Code, add the marketplace and install the plugin:
+1. In Storylink, open the **Developers** page and create an API key (`sl_live_…`). Every plan can create keys. The skills need only a read-only key.
+2. Set the `STORYLINK_API_KEY` environment variable to the key, in the shell where you start Claude Code. For example: `export STORYLINK_API_KEY=sl_live_…`. Do not put the key in a file that you commit.
+3. In Claude Code, add the marketplace and install the plugin:
 
    ```text
    /plugin marketplace add storylinkpro/storylink-skills
    /plugin install storylink@storylinkpro
    ```
 
-2. Restart Claude Code.
-3. Type `/mcp`, select `storylink` and sign in to Storylink. Allow access.
+4. Restart Claude Code. Type `/mcp` and check that `storylink` is connected.
 
-The plugin installs the three skills and the hosted Storylink MCP server (`https://storylink.pro/mcp`). The plugin does not ask for an API key. You sign in with your Storylink account, on any plan.
+The plugin installs the three skills and the hosted Storylink MCP server (`https://storylink.pro/mcp`). The plugin reads the key from `STORYLINK_API_KEY` and sends it in the `Authorization` header.
 
 ## Install in Cursor, Codex, Copilot and other agents
 
 The skills use the open Agent Skills format (a `SKILL.md` file in a folder). Many agents can read them, for example Cursor, Codex, GitHub Copilot and Gemini CLI.
 
-1. Add the Storylink MCP server to your agent. The [storylink-mcp README](https://github.com/storylinkpro/storylink-mcp#connect-with-sign-in-with-storylink) gives the configuration for claude.ai, Claude Desktop, Cursor, Windsurf and other clients.
+1. Create an API key on the Developers page in Storylink. Then add the Storylink MCP server to your agent with the key. The [storylink-mcp README](https://github.com/storylinkpro/storylink-mcp#connect-your-client) gives the configuration for Claude Desktop, Cursor, Windsurf and other clients. claude.ai connectors cannot send an API key yet.
 2. Install the skills with the [skills CLI](https://github.com/vercel-labs/skills):
 
    ```bash
@@ -53,15 +54,15 @@ You can also copy a skill folder from `skills/` into the skills folder of your a
 
 ## Plans
 
-The skills work on every Storylink plan. On the Free plan, the server shows the current month only. The numbers are always this month so far against last month. The skills tell you when the plan limited the numbers. Pro and Business show the full history.
+The skills work on every Storylink plan. They only read, so a read-only key is enough. On the Free plan, the server shows the current month only. The numbers are always this month so far against last month. The skills tell you when the plan limited the numbers. Pro and Business show the full history.
 
 ## Security
 
-- **The connection is read-only.** When you sign in with Storylink, the server gives the agent read tools only. The skills give advice. They cannot post, schedule or change content.
-- **No key in your files.** The plugin uses Sign in with Storylink. The skills never write a token or a key into a file.
+- **Use a read-only key.** Free and Pro keys are always read-only. On Business, a key is read-only unless you create it with "Allow creating and scheduling content". A read-only key gives the agent read tools only. The skills give advice. They do not post, schedule or change content.
+- **No key in your files.** The plugin reads the key from the `STORYLINK_API_KEY` environment variable. The skills never write a key into a file.
 - **Data from outside.** Captions, comments, usernames and other text come from you, your clients and your audience. The skills tell the agent to use this text as data, never as instructions.
-- **Limits.** Each signed-in user has 60 requests per minute. All the MCP clients of that user share this limit.
-- **Disconnect an app.** In Storylink, open **Settings › Connected apps** and select **Revoke**. To use the app again, remove the Storylink connector in the app and add it again.
+- **Limits.** Each API key has 60 requests per minute. The REST API and the MCP server share this limit. Above the limit, the server answers `429` with `Retry-After`.
+- **Disconnect an app.** Revoke its key on the Developers page in Storylink.
 
 Send security problems to admin@storylink.pro.
 

@@ -2,7 +2,10 @@
   "mcpServers": {
     "storylink": {
       "type": "http",
-      "url": "https://storylink.pro/mcp"
+      "url": "https://storylink.pro/mcp",
+      "headers": {
+        "Authorization": "Bearer ${STORYLINK_API_KEY}"
+      }
     }
   }
 }

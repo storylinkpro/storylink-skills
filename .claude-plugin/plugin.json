@@ -2,7 +2,7 @@
   "name": "storylink",
   "displayName": "Storylink — Instagram analytics skills",
   "version": "1.0.0",
-  "description": "Skills for Storylink (Instagram scheduling and analytics): write a report for each workspace, find the probable cause of a drop in views, and find what works in your best and worst content. Includes the Storylink MCP server (Sign in with Storylink, read-only).",
+  "description": "Skills for Storylink (Instagram scheduling and analytics): write a report for each workspace, find the probable cause of a drop in views, and find what works in your best and worst content. Includes the Storylink MCP server (connects with a Storylink API key from the STORYLINK_API_KEY environment variable).",
   "author": {
     "name": "Storylink",
     "url": "https://storylink.pro"
